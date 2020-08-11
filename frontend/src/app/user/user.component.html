@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col s12 ">
+        <div class="card ">
+            <div class="card-content white-text">
+                <div class="row">
+                     <div class="col s5">
+                         <h1>New User</h1>
+                        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+                            <input type="hidden" name="_id" #_id='ngModel' [(ngModel)]="userservice.selectedUser._id">
+                            <div class="row">
+                                <div class="input-feild col s12">
+                                    <label >Name:
+                                        <label class="red-text">*</label>
+                                    </label>
+                                    <input type="text" name="name" #name='ngModel' [(ngModel)]="userservice.selectedUser.name" placeholder="enter full name" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-feild col s12">
+                                    <label >Address:
+                                        <label class="red-text">*</label>
+                                    </label>
+                                    <input type="text" name="address" #address='ngModel' [(ngModel)]="userservice.selectedUser.address" placeholder="enter your address" required>
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-feild col s12">
+                                    <label >Location:
+                                        <label class="red-text">*</label>
+                                    </label>
+                                    <input type="text" name="location" #location='ngModel' [(ngModel)]="userservice.selectedUser.location" placeholder="enter your location" required>
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-feild col s12">
+                                    <label >Phone No:
+                                        <label class="red-text">*</label>
+                                    </label>
+                                    <input type="number" name="phone" #phone='ngModel' [(ngModel)]="userservice.selectedUser.phone" placeholder="enter your phone no" required>
+                                    '
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right"(click)="resetForm(userForm)"> Resert</button>
+                                    <button class="btn btn-custom right" > Submit</button>
+                                </div>
+                            </div>
+                         </form>
+
+                     </div>
+                     <div class="col s7">
+                         <h1>User List</h1>
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Location</th>
+                                    <th>Phone No</th>
+                                    <th>operations</th>
+                                </tr>
+                                <tr *ngFor ="let user of userservice.user">
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.address}}</td>
+                                    <td>{{user.location}}</td>
+                                    <td>{{user.phone}}</td>
+                                    <td>
+                                        <button class="action-btn" (click)="onEdit(user)">Edit</button>
+                                        <button class="action-btn"(click)="onDelete(user._id,userForm)">Delete</button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                     </div>
+                </div>
+
+            </div>
+
+        </div>
+     
+    </div>
+  </div>
+           
